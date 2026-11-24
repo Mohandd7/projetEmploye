@@ -5,19 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Employe;
 use App\Services\EmployeService;
 use Illuminate\Http\Request;
+use Exception;
 
 class EmployeController extends Controller
 {
     public function listEmployes()
     {
-        $service = new EmployeService();
-        $employes = $service->getListEmployes();
-        return view('listEmployes', compact('employes'));
+        try {
+            $service = new EmployeService();
+            $employes = $service->getListEmployes();
+            return view('listEmployes', compact('employes'));
+
+        } catch (Exception $exception) {
+            return view('error', compact('exception'));
+        }
     }
 
     public function addEmploye()
     {
-
         $employe = new Employe();
         return view('formEmploye', compact('employe'));
     }
@@ -35,17 +40,14 @@ class EmployeController extends Controller
 
         $id = $request->input('id');
         if ($id) {
-
             $employe = $service->getEmploye($id);
         } else {
-
             $employe = new Employe();
         }
 
         $employe->civilite = $request->input('civi');
         $employe->prenom = $request->input('prenom');
         $employe->nom = $request->input('nom');
-
 
         $pwd = $request->input('mdp');
         if (strlen($pwd) > 0) {

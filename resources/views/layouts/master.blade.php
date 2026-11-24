@@ -3,8 +3,8 @@
 <head>
     <title>projet Employes</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/bootstrap-5.3.8-dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="assets/bootstrap-5.3.8-dist/css/employes.css"/>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/css/employes.css"/>
 </head>
 <body class="body">
 <div>
